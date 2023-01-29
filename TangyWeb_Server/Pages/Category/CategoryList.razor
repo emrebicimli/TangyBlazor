@@ -28,20 +28,40 @@
                             </td>
                             <td>
                                 <NavLink href="" class="btn-primary btn">Edit</NavLink>
+
                             </td>
                         </tr>
                     }
                 </tbody>
             </table>
         }
+        else
+        {
+            if (IsLoading)
+            {
+                <div class="text-center">
+                    <img src="/images/loading.gif" />
+                </div>
+            }
+            else
+            {
+                <p>No records found.</p>
+            }
+        }
     </div>
 </div>
 
 @code {
     private IEnumerable<CategoryDTO> Categories { get; set; } = new List<CategoryDTO>();
+    public bool IsLoading { get; set; } = true;
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Run(LoadCategories);
+    }
 
-    protected override void OnInitialized()
+    private void LoadCategories()
     {
         Categories = _categoryRepository.GetAll();
+        IsLoading = false;
     }
 }

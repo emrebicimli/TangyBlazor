@@ -12,8 +12,8 @@ using Tangy_DataAccess.Data;
 namespace Tangy_DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220821081448_AddCategoryToDatabase")]
-    partial class AddCategoryToDatabase
+    [Migration("20230128111947_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
